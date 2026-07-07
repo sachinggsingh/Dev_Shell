@@ -45,6 +45,9 @@ class HelpCommand:
             "remove-server": "Remove a server: remove-server <name>",
             "servers": "List all registered servers",
         },
+        "Processes Commands" : {
+            "ps": "Watch the process of your system"
+        },
         "System Commands": {
             "clear": "Clear screen",
             "help": "Show this help",

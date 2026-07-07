@@ -9,6 +9,7 @@ from dev_shell.commands.permissions import Permissions
 from dev_shell.commands.server import ServerCommands, WatchServerCommand
 from dev_shell.commands.system import SystemCommands
 from dev_shell.integration.git_commands import GitCommands
+from dev_shell.commands.process import Processes
 
 
 def build_command_registry(shell) -> dict:
@@ -70,6 +71,7 @@ def build_command_registry(shell) -> dict:
         "gpu": SystemCommands.gpu,
         "services": SystemCommands.services,
         "packages": SystemCommands.packages,
+        "ps": Processes.execute,
         # Integration
         "git": git.execute,
         # Meta

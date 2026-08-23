@@ -45,14 +45,11 @@ class HelpCommand:
             "remove-server": "Remove a server: remove-server <name>",
             "servers": "List all registered servers",
         },
-        "Processes Commands" : {
-            "ps": "Watch the process of your system"
+        "Process Commands": {
+            "ps": "List and watch system processes interactively",
         },
         "System Commands": {
             "clear": "Clear screen",
-            "help": "Show this help",
-            "exit": "Exit shell",
-            "q": "Exit shell (alias)",
             "system": "Show system overview (OS, CPU, memory, disk, uptime)",
             "hardware": "Show hardware info (CPU model, RAM, disk, battery)",
             "cpu": "Show CPU usage/frequency  [-p per-core] [-f frequency]",
@@ -66,6 +63,16 @@ class HelpCommand:
             "services": "Show running services (OS-aware)",
             "packages": "List installed packages (auto-detects package manager)",
         },
+        "Integration Commands": {
+            "git": "Run any git command: git <subcommand> [args]",
+            "docker": "Run any docker command: docker <subcommand> [args]",
+            "k8": "Run any kubectl command: k8 <subcommand> [args]",
+        },
+        "Meta Commands": {
+            "help": "Show this help message",
+            "exit": "Exit the shell",
+            "q": "Exit the shell (alias for exit)",
+        },
     }
 
     @staticmethod
@@ -78,5 +85,6 @@ class HelpCommand:
         for category, commands in HelpCommand.HELP_TEXT.items():
             print(f"\n[{category}]")
             for cmd, desc in commands.items():
-                print(f"  {cmd:<14}  {desc}")
+                print(f"  {cmd:<16}  {desc}")
         print()
+

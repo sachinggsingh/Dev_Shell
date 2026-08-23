@@ -54,41 +54,90 @@ The `watch` command connects to a registered server and streams live metrics (CP
 
 ## Commands
 
-| Command                                                       | Description                                                           |
-| ------------------------------------------------------------- | --------------------------------------------------------------------- |
-| `pwd`                                                         | Show current working directory                                        |
-| `ls [path] [-a] [-l] [-h] [-d]`                               | List files and folders with optional hidden/long/human-readable/dir flags |
-| `cd <path>`                                                   | Change current directory                                              |
-| `mkdir <name> [-p]`                                           | Create directory with optional parent creation                        |
-| `rmdir <name> [-r]`                                           | Remove directory, optionally recursively                              |
-| `touch <name>`                                                | Create a file if it does not exist                                    |
-| `edit <editor-name> <filename>`                               | Edit the file with the editor installed                               |
-| `rm <name> [-f]`                                              | Remove a file with optional force                                     |
-| `cat <name>`                                                  | Show the file content                                                 |
-| `copy <source> <destination>`                                   | Copy files or directories                                             |
-| `move <source> <destination>`                                   | Move or rename files or directories                                   |
-| `head <file> [-n lines]`                                      | Show first N lines of a file                                          |
-| `tail <file> [-n lines]`                                      | Show last N lines of a file                                           |
-| `find <name> [-f] [-d] [-l]`                                  | Find files or directories recursively                                 |
-| `tree [path] [-d] [-f] [-L depth]`                            | Display directory tree with filters and depth control                 |
-| `size <path>`                                                 | Show file or directory size                                           |
-| `perm <path>`                                                 | Show file permission flags                                            |
-| `logs <file>`                                                 | Print file contents                                                   |
-| `watch <server-name> [-i seconds] [-m cpu,memory] [-n count]` | Watch server metrics in real time                                     |
-| `watch-server <server-name>`                                  | Explicit server monitoring command                                    |
-| `add-server <name> <ip> <port>`                               | Register a server for monitoring                                      |
-| `remove-server <name>`                                        | Remove a registered server                                            |
-| `servers`                                                     | List all registered servers                                           |
-| `ping <host>`                                                 | Send ICMP ECHO_REQUEST to network hosts                               |
-| `dns <hostname>`                                              | Resolve a hostname to an IP address                                   |
-| `ip [options] [target]`                                       | Show IP addresses for a host (IPv4/IPv6)                              |
-| `curl <url> [-X method] [-H header] [-d data]`                | Make HTTP requests to a URL                                           |
-| `traceroute <hostname> [-d]`                                  | Print the route packets trace to network host                         |
-| `nslookup <hostname>`                                         | Query Internet name servers interactively                             |
-| `clear`                                                       | Clear the screen                                                      |
-| `help`                                                        | Display help text                                                     |
-| `git [command] [args]`                                        | Execute any git command seamlessly within the shell                   |
-| `exit` / `q`                                                  | Exit the shell                                                        |
+### File & Directory
+
+| Command | Description |
+| ------- | ----------- |
+| `pwd` | Show current working directory |
+| `ls [path] [-a] [-l] [-h] [-d]` | List files and folders |
+| `cd <path>` | Change current directory |
+| `mkdir <name> [-p]` | Create directory with optional parent creation |
+| `rmdir <name> [-r]` | Remove directory, optionally recursively |
+| `touch <name>` | Create a file if it does not exist |
+| `edit <editor> <filename>` | Edit a file with the given editor |
+| `rm <name> [-f]` | Remove a file with optional force |
+| `cat <name>` | Show the file content |
+| `copy <source> <destination>` | Copy files or directories |
+| `move <source> <destination>` | Move or rename files or directories |
+| `rename <old_file> <new_file>` | Rename a file |
+| `head <file> [-n lines]` | Show first N lines of a file |
+| `tail <file> [-n lines]` | Show last N lines of a file |
+| `find <name> [-f] [-d] [-l]` | Find files or directories recursively |
+| `tree [path] [-d] [-f] [-L depth]` | Display directory tree |
+| `stat <path>` | Show detailed file metadata |
+| `grep <pattern> <file> [-i] [-n] [-c] [-v] [-r]` | Search text inside files |
+| `checksum <file>` | Generate checksum of a file |
+| `diff <file1> <file2>` | Compare two files |
+| `size <path>` | Show file or directory size |
+| `perm <path>` | Show file permission flags |
+| `logs <file>` | Print file contents |
+
+### Network
+
+| Command | Description |
+| ------- | ----------- |
+| `ping <host>` | Send ICMP echo requests to a host |
+| `dns <hostname>` | Resolve a hostname to an IP address |
+| `ip [options] [target]` | Show IP addresses for a host |
+| `curl <url> [-X method] [-H header] [-d data]` | Make HTTP requests |
+| `traceroute <hostname> [-d]` | Trace the route to a host |
+| `nslookup <hostname>` | Query Internet name servers |
+
+### Server Monitoring
+
+| Command | Description |
+| ------- | ----------- |
+| `watch <server> [-i secs] [-m cpu,memory] [-n count]` | Stream live server metrics |
+| `watch-server <server>` | Explicit alias for `watch` |
+| `add-server <name> <ip> <port>` | Register a server for monitoring |
+| `remove-server <name>` | Remove a registered server |
+| `servers` | List all registered servers |
+
+### System
+
+| Command | Description |
+| ------- | ----------- |
+| `system` | Show system overview (OS, CPU, memory, disk, uptime) |
+| `hardware` | Show hardware info (CPU model, RAM, disk, battery) |
+| `cpu [-p] [-f]` | Show CPU usage / frequency |
+| `memory [-s]` | Show RAM usage (with optional swap) |
+| `disk [-a]` | Show disk partitions |
+| `network` | Show network interfaces, IP, and I/O counters |
+| `processes [-n N] [-a]` | List processes by CPU usage |
+| `ps` | Interactive process viewer |
+| `env [KEY]` | Show environment variables |
+| `uptime` | Show boot time and uptime duration |
+| `gpu` | Show GPU info (OS-aware) |
+| `services` | Show running services (OS-aware) |
+| `packages` | List installed packages (auto-detects package manager) |
+| `clear` | Clear the terminal screen |
+
+### Integration
+
+| Command | Description |
+| ------- | ----------- |
+| `git <subcommand> [args]` | Run any git command inside the shell |
+| `docker <subcommand> [args]` | Run any docker command inside the shell |
+| `k8 <subcommand> [args]` | Run any kubectl command inside the shell |
+
+### Meta
+
+| Command | Description |
+| ------- | ----------- |
+| `help` | Display help text |
+| `exit` / `q` | Exit the shell |
+
+
 
 ---
 

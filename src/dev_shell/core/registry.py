@@ -9,6 +9,8 @@ from dev_shell.commands.permissions import Permissions
 from dev_shell.commands.server import ServerCommands, WatchServerCommand
 from dev_shell.commands.system import SystemCommands
 from dev_shell.integration.git_commands import GitCommands
+from dev_shell.integration.k8_commands import K8sCommands
+from dev_shell.integration.docker_commands import DockerCommands
 from dev_shell.commands.process import Processes
 
 
@@ -18,7 +20,8 @@ def build_command_registry(shell) -> dict:
     server_cmds = ServerCommands(shell.server_registry)
     network = shell.network_commands or NetWorkcommands()
     git = GitCommands()
-
+    docker = DockerCommands()
+    k8s = K8sCommands()
     return {
         # File & directory
         "pwd": DirectoryCommands.pwd,
@@ -74,6 +77,8 @@ def build_command_registry(shell) -> dict:
         "ps": Processes.execute,
         # Integration
         "git": git.execute,
+        "docker": docker.execute,
+        "k8": k8s.execute,
         # Meta
         "help": HelpCommand.help,
         "exit": shell._handle_exit,
